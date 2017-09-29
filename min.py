@@ -9,7 +9,7 @@ def main():
     # load configuration
     # TODO: Push this to a YAML file
     config = {
-            'path': '~/notes',
+            'path': os.path.expanduser('~/notes'),
             'default_min': 'personal',
             'default_ref': 'quick',
             'ext': 'md',
@@ -81,7 +81,7 @@ def cmd_open(is_min_type, min_date, title, config, **kwargs):
 
     # dir path
     note_path_parts = []
-    note_path_parts.append(os.path.expanduser(config['path']))
+    note_path_parts.append(config['path'])
     note_path_parts.append('mins' if is_min_type else 'refs')
     if is_min_type:
         note_path_parts.append(title)
@@ -95,7 +95,7 @@ def cmd_open(is_min_type, min_date, title, config, **kwargs):
 
     # create dir and open
     os.makedirs(note_path, exist_ok=True)
-    os.system('{} "{}"'.format(os.getenv('EDITOR'), note_fullpath))
+    os.system('cd {}; {} "{}"'.format(config['path'], os.getenv('EDITOR'), note_fullpath))
 
 def cmd_list(**kwargs):
     pass
