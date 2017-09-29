@@ -97,10 +97,6 @@ def cmd_open(is_min_type, min_date, title, config, **kwargs):
     os.makedirs(note_path, exist_ok=True)
     os.system('{} "{}"'.format(os.getenv('EDITOR'), note_fullpath))
 
-    print(note_path)
-    print(note_filename)
-
-
 def cmd_list(**kwargs):
     pass
 
