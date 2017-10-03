@@ -37,7 +37,7 @@ def main():
     ## open: date (only for mins)
     open_parser.add_argument(
         '--date', '-d',
-        help='for min: date to open (default: today, format: 20170329)',
+        help='for min: date to open (default: today, format: 2017-03-29)',
         dest='min_date',
         type=validate_date_string,
         default=str(time.strftime('%Y-%m-%d'))
